@@ -2,7 +2,7 @@
   "./.projections.json": { "type": "dit" },
   "./.tasks": { "type": "tasks" },
 
-  "README.md": {
+  "*.md": {
     "type": "doc"
   },
 
