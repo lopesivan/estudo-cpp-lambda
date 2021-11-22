@@ -12,3 +12,7 @@ cwd=$(VIM_FILEDIR)
 #output=terminal
 output=quickfix
 
+[clean-build]
+command=find . -not -iwholename '*.git*' -type f -executable -delete
+# working directory
+cwd=$(VIM_FILEDIR)
