@@ -1,10 +1,11 @@
 #include <iostream>
-#include <string>
 
 //
 // main
 //
 int main() {
+
+	std::cout << "Hello, World!" << std::endl;
 
 	return 0; // success return
 }
