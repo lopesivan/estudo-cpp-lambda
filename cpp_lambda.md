@@ -223,116 +223,130 @@ int main() {
 ---
 
 # Caption Close \[n\]
-8
-```cpp
-    int n = 3;
-    std::vector <int> v {1,2,3,4,5,6};
-    std::for_each(v.begin(), v.end(), [n](int i){
-        if(i%n==0)
-            std::cout << i << " é idivisível por "<< n << std::endl;
-        else
-            std::cout << i << " não é idivisível por "<< n << std::endl;
 
-        n = 9;
-        std::cout <<"=> "<< n << std::endl;
-    });
+n entra no escopo, mas não pode ser setado.
+
+```cpp
+int n = 3;
+std::vector <int> v {1,2,3,4,5,6};
+std::for_each(v.begin(), v.end(), [n](int i){
+    if(i%n==0)
+        std::cout << i << " é idivisível por "<< n << std::endl;
+    else
+        std::cout << i << " não é idivisível por "<< n << std::endl;
+
+    n = 9;
+    std::cout <<"=> "<< n << std::endl;
+});
 ```
 
 ---
 
 # Caption Close \[&n\]
-9
-```cpp
-    int n = 3;
-    std::vector <int> v {1,2,3,4,5,6};
-    std::for_each(v.begin(), v.end(), [&n](int i){
-        if(i%n==0)
-            std::cout << i << " é idivisível por "<< n << std::endl;
-        else
-            std::cout << i << " não é idivisível por "<< n << std::endl;
 
-        n = 9;
-        std::cout <<"=> "<< n << std::endl;
-    });
+n entra no escopo pelo adress, e pode ser setado.
+
+```cpp
+int n = 3;
+std::vector <int> v {1,2,3,4,5,6};
+std::for_each(v.begin(), v.end(), [&n](int i){
+    if(i%n==0)
+        std::cout << i << " é idivisível por "<< n << std::endl;
+    else
+        std::cout << i << " não é idivisível por "<< n << std::endl;
+
+    n = 9;
+    std::cout <<"=> "<< n << std::endl;
+});
 ```
 
 ---
 
 # Caption Close \[&n,e\]
-10
-```cpp
-    int n = 3, e = 5;
-    std::vector <int> v {1,2,3,4,5,6};
-    std::for_each(v.begin(), v.end(), [&n,e](int i){
-        if(i%n==0)
-            std::cout << i << " é idivisível por "<< n << std::endl;
-        else
-            std::cout << i << " não é idivisível por "<< n << std::endl;
 
-        n = 9;
-        std::cout <<"n = "<< n << std::endl;
-        std::cout <<"e = "<< e << std::endl;
-    });
+n entra no escopo pelo adress, pode ser setado e a variável "e"
+não pode ser setada.
+
+```cpp
+int n = 3, e = 5;
+std::vector <int> v {1,2,3,4,5,6};
+std::for_each(v.begin(), v.end(), [&n,e](int i){
+    if(i%n==0)
+        std::cout << i << " é idivisível por "<< n << std::endl;
+    else
+        std::cout << i << " não é idivisível por "<< n << std::endl;
+
+    n = 9;
+    std::cout <<"n = "<< n << std::endl;
+    std::cout <<"e = "<< e << std::endl;
+});
 ```
 
 ---
 
 # Caption Close \[&n,e\]
-11
-```cpp
-    int n = 3, e = 5;
-    std::vector <int> v {1,2,3,4,5,6};
-    std::for_each(v.begin(), v.end(), [&n,e](int i){
-        if(i%n==0)
-            std::cout << i << " é idivisível por "<< n << std::endl;
-        else
-            std::cout << i << " não é idivisível por "<< n << std::endl;
 
-        n = 9;
-        e = 6;
-        std::cout <<"n = "<< n << std::endl;
-        std::cout <<"e = "<< e << std::endl;
-    });
+n entra no escopo pelo adress, pode ser setado e a variável "e"
+não pode ser setada.
+
+```cpp
+int n = 3, e = 5;
+std::vector <int> v {1,2,3,4,5,6};
+std::for_each(v.begin(), v.end(), [&n,e](int i){
+    if(i%n==0)
+        std::cout << i << " é idivisível por "<< n << std::endl;
+    else
+        std::cout << i << " não é idivisível por "<< n << std::endl;
+
+    n = 9;
+    e = 6;
+    std::cout <<"n = "<< n << std::endl;
+    std::cout <<"e = "<< e << std::endl;
+});
 ```
 
 ---
 
 # Caption Close \[&\]
-12
-```cpp
-    int n = 3, e = 5;
-    std::vector <int> v {1,2,3,4,5,6};
-    std::for_each(v.begin(), v.end(), [&](int i){
-        if(i%n==0)
-            std::cout << i << " é idivisível por "<< n << std::endl;
-        else
-            std::cout << i << " não é idivisível por "<< n << std::endl;
 
-        n = 9;
-        e = 4;
-        std::cout <<"n = "<< n << std::endl;
-        std::cout <<"e = "<< e << std::endl;
-    });
+"n" e "e" entra no escopo pelo adress, e pode ser setado.
+
+```cpp
+int n = 3, e = 5;
+std::vector <int> v {1,2,3,4,5,6};
+std::for_each(v.begin(), v.end(), [&](int i){
+    if(i%n==0)
+        std::cout << i << " é idivisível por "<< n << std::endl;
+    else
+        std::cout << i << " não é idivisível por "<< n << std::endl;
+
+    n = 9;
+    e = 4;
+    std::cout <<"n = "<< n << std::endl;
+    std::cout <<"e = "<< e << std::endl;
+});
 ```
 
 ---
 
 # Caption Close \[=\]
-13
-```cpp
-    int n = 3, e = 5;
-    std::vector <int> v {1,2,3,4,5,6};
-    std::for_each(v.begin(), v.end(), [=](int i){
-        if(i%n==0)
-            std::cout << i << " é idivisível por "<< n << std::endl;
-        else
-            std::cout << i << " não é idivisível por "<< n << std::endl;
 
-        // n = 9;
-        // e = 4;
-        std::cout <<"n = "<< n << std::endl;
-        std::cout <<"e = "<< e << std::endl;
-    });
+"n" e "e" entra no escopo, e não pode ser setado.
+
+```cpp
+int n = 3, e = 5;
+std::vector <int> v {1,2,3,4,5,6};
+std::for_each(v.begin(), v.end(), [=](int i){
+    if(i%n==0)
+        std::cout << i << " é idivisível por "<< n << std::endl;
+    else
+        std::cout << i << " não é idivisível por "<< n << std::endl;
+
+    // n = 9;
+    // e = 4;
+    std::cout <<"n = "<< n << std::endl;
+    std::cout <<"e = "<< e << std::endl;
+});
 ```
 
 ---
