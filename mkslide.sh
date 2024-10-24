@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+# 0 - stdin
+# 1 - stdout
+# 2 - stderr
+
+exec 4>&1 # stdout duplicado ( FD 4 tem as mesmas caracteristicas
+# do STDOUT), aponta para o terminal.
+
+exec 1>slide.md # stdout aponta para `out.txt'
+
+#echo Estou escrevendo no arquivo.               # echo "TEXTO" > out.txt
+#echo Estou escrevendo no terminal. >&4          # echo "TEXTO"
+#echo Estou escrevendo no arquivo novamente.     # echo "TEXTO" > out.txt
+
 cat <<EOF
 ---
 title: Lambda expression in modern C++
@@ -33,6 +46,11 @@ cat <<EOF
 /* -*- vim: set ts=4 sw=4 tw=64 ft=markdown: -*- */
 EOF
 
-echo lookatme -e file_loader slide.md >&2
+echo lookatme -e file_loader slide.md >&4
+
+exec 1>&4 # FD 1 recebe as caracteristicas de FD 4.
+# FD 1 ressetado.
+
+exec 4>&- # FD 4 eh liberado.
 
 exit 0
