@@ -11,8 +11,10 @@ descrição
 
 EOF
 
-ls example_1.* |
-	sort -t. -k2 -n |
+prefix=example_1.
+
+ls ${prefix}*.cpp |
+	sort -n -t\. -k 2 |
 	sed \
 		-e 'h' \
 		-e 'g;s/^/\n---\n# /' \
